@@ -50,7 +50,7 @@ public class dataman {
             Sheet sheet = workbook.getSheetAt(0);
             System.out.println("Sheet Name: " + sheet.getSheetName());
             System.out.println("Row Count: " + sheet.getRow(0).getLastCellNum());
-            System.out.println("-----------------");
+            System.out.println("________________________________    ");
             Iterator<Row> rowIterator = sheet.rowIterator();
             while(rowIterator.hasNext()){
                 Row row = rowIterator.next();
@@ -63,7 +63,7 @@ public class dataman {
                 }
                 System.out.println();
             }
-            System.out.println("-----------------");
+            System.out.println("________________________________");
             workbook.close();
         } catch (Exception e) {
             e.printStackTrace();

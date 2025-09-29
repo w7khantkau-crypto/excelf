@@ -8,8 +8,7 @@ public class Excel
 {
     public static void main( String[] args )
     {
-        dataman tester = new dataman();
-        tester.readSaleLog();
-
+    dummy test =  new dummy();
+    test.readSaleLogTest();
     }
 }
