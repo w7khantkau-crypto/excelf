@@ -3,12 +3,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Iterator;
 
+import org.apache.poi.ss.formula.functions.Column;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class dataman {
-    private static final String test = "src/main/java/org/example/test.xlsx";
+    private static final String test = "src/main/java/org/example/test.xls";
     public static void readAllSheets(){//read all the sheets
         try {
             FileInputStream file = new FileInputStream(new File(test));
@@ -54,6 +55,7 @@ public class dataman {
             while(rowIterator.hasNext()){
                 Row row = rowIterator.next();
                 Iterator<Cell> cellIterator = row.cellIterator();
+
                 while(cellIterator.hasNext()){
                     Cell cell = cellIterator.next();
                     String cellValue = formatter.formatCellValue(cell);
@@ -62,6 +64,7 @@ public class dataman {
                 System.out.println();
             }
             System.out.println("-----------------");
+            workbook.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
