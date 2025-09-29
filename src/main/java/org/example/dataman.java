@@ -9,7 +9,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class dataman {
     private static final String test = "src/main/java/org/example/test.xlsx";
-    public static void readSheets(){
+    public static void readAllSheets(){//read all the sheets
         try {
             FileInputStream file = new FileInputStream(new File(test));
             Workbook workbook = new XSSFWorkbook(file);
@@ -41,4 +41,29 @@ public class dataman {
             e.printStackTrace();
         }
     }
+    public static void readSaleLog(){//can be reused for different sheet read
+        try {
+            FileInputStream file = new FileInputStream(new File(test));
+            Workbook workbook = new XSSFWorkbook(file);
+            DataFormatter formatter = new DataFormatter();
+            Sheet sheet = workbook.getSheetAt(0);
+            System.out.println("Sheet Name: " + sheet.getSheetName());
+            System.out.println("Row Count: " + sheet.getRow(0).getLastCellNum());
+            System.out.println("-----------------");
+            Iterator<Row> rowIterator = sheet.rowIterator();
+            while(rowIterator.hasNext()){
+                Row row = rowIterator.next();
+                Iterator<Cell> cellIterator = row.cellIterator();
+                while(cellIterator.hasNext()){
+                    Cell cell = cellIterator.next();
+                    String cellValue = formatter.formatCellValue(cell);
+                    System.out.print(cellValue+" \t");
+                }
+                System.out.println();
+            }
+            System.out.println("-----------------");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    };
 }
